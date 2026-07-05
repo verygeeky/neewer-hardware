@@ -28,6 +28,29 @@ Projects are grouped by function; the transport is called out per entry.
 
 ---
 
+## Closed source / commercial
+
+Neewer's own apps and the paid control tools. Closed source; listed for completeness — the
+community projects elsewhere in this list are the open alternatives.
+
+- **NEEWER Studio** — the primary first-party control app (Bluetooth LE).
+  [Android](https://play.google.com/store/apps/details?id=neewer.nginx.annularlight) ·
+  [iOS](https://apps.apple.com/us/app/neewer-studio/id1455948340). The Android package id is
+  `neewer.nginx.annularlight` — an unusual identifier whose `annularlight` ("ring light") points
+  to the app's origin as a ring-light controller.
+- **NEEWER Control Center** — first-party device-management app for desktop.
+  [Mac App Store](https://apps.apple.com/us/app/neewer-control-center/id1664344174?mt=12).
+- **NEEWER Live** — first-party app for the WiFi / streaming lights, and the basis for the
+  **Elgato Stream Deck** plugin. The **"NEEWER Live" Stream Deck plugin** (requires NEEWER
+  Control Center) controls Neewer streaming lights from a Stream Deck — the official
+  integration the community OBS/Stream Deck projects reimplement.
+  [Elgato Marketplace](https://marketplace.elgato.com/stream-deck/plugins).
+- **NEEWER Live 2.4G** — first-party app paired with the 2.4 GHz USB dongle.
+- **NEEWER Home** — first-party home-lighting app for the `NH-*` line (Bluetooth / WiFi), which
+  uses the distinct `0x7A` protocol noted above.
+
+---
+
 ## Control libraries
 
 ### Python
