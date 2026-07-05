@@ -1,0 +1,6 @@
+# Internal open-items list — tracked in the GitHub issue tracker instead
+ISSUES.md
+
+# OS / editor cruft
+.DS_Store
+*.swp
