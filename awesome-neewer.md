@@ -184,7 +184,7 @@ BLE, unless noted.
   integration for the **GL25B over its USB HID dongle** (not BLE), local-only; derives packet
   handling from AugusDogus/neweer-tray's HID writeup.
 - **[MrCurlsTTV/hacs-neweer-gl1](https://github.com/MrCurlsTTV/hacs-neweer-gl1)** — Python.
-  HACS-distributed integration for the **WiFi** GL1 Pro (UDP/5052, subnet auto-discovery via
+  HACS custom-repository integration for the **WiFi** GL1 Pro (UDP/5052, subnet auto-discovery via
   a checksummed handshake; identifies a light by a `80 03 00 83` response). On/off,
   brightness, CCT 2900–7000 K. MIT. v1.0.4, last push 2026-06-26.
 - **[doneverhart/neewer-gl1-pro-ha](https://github.com/doneverhart/neewer-gl1-pro-ha)** —
@@ -226,6 +226,9 @@ BLE, unless noted.
   REST exposure. Last push 2026-03-24.
 - **[Xieo/ESP32-C3-Home-Assistant-Neewer-SNL660](https://github.com/Xieo/ESP32-C3-Home-Assistant-Neewer-SNL660)**
   — C++ / ESPHome config targeting the SNL660, exposed to HA. Last push 2026-02-11.
+- **[Xieo/ESP32-C3-Home-Assistant-Neewer-RGB-1200](https://github.com/Xieo/ESP32-C3-Home-Assistant-Neewer-RGB-1200)**
+  — C++ / ESPHome config for the **RGB-1200** over an ESP32-C3 BLE bridge, exposed to HA (light
+  MAC + WiFi credentials in YAML). Same author as the SNL660 config. MIT.
 - **[dsjodin/neewer_light_288ARC](https://github.com/dsjodin/neewer_light_288ARC)** — C++
   (ESP32 / PlatformIO). Controls the **288ARC** studio light over an **A7105 2.4 GHz** module
   (not BLE — the 288ARC is a proprietary-RF fixture); ships its own
@@ -382,11 +385,6 @@ in scope:
   registry was not verified (npmjs.com search returned HTTP 403).
 - **crates.io / npm publication** of the Rust and JS/TS projects above was not independently
   confirmed; they appear to be source-only GitHub repos.
-- **[MrCurlsTTV/hacs-neweer-gl1](https://github.com/MrCurlsTTV/hacs-neweer-gl1)** — listed
-  above under HA; the WiFi GL1 protocol details were confirmed but its HACS-default-store
-  status was not.
-- **[Xieo/ESP32-C3-Home-Assistant-Neewer-RGB-1200](https://github.com/Xieo/ESP32-C3-Home-Assistant-Neewer-RGB-1200)**
-  — same author as the SNL660 config; RGB-1200-specific, not individually fetched.
 - **dsjodin/neweer_studio, dsjodin/studio_lights** — recent 2026 activity, empty API
   descriptions, not fetched.
 - **@4noxx** — a Python GL25B USB-HID implementation cited secondhand in
