@@ -5,8 +5,7 @@ lights — with an emphasis on the Bluetooth-LE "Infinity" family (TL120C / TL90
 RGB / CB / SL panels, COB heads).
 
 Activity figures (stars, last-commit dates), licenses, and model lists are stated only where
-visible on the project's page. Unconfirmed leads are collected in
-[Leads to verify](#leads-to-verify) at the end.
+visible on the project's page.
 
 ## A note on transports
 
@@ -55,6 +54,9 @@ community projects elsewhere in this list are the open alternatives.
 
 ### Python
 
+- **[dsjodin/neweer_studio](https://github.com/dsjodin/neweer_studio)** — Python. A BLE control
+  library and CLI for Neewer lights (targets TL21C, SL90, and other BLE fixtures), independent
+  of the official app.
 - **[matthobby/neewer-lib](https://github.com/matthobby/neewer-lib)** — Python (PyPI:
   [`neewerlite`](https://pypi.org/project/neewerlite/)). BLE control library that documents
   and implements two opcode families: the standard `0x78` "Studio" protocol and a separate
@@ -252,6 +254,9 @@ BLE, unless noted.
 - **[Xieo/ESP32-C3-Home-Assistant-Neewer-RGB-1200](https://github.com/Xieo/ESP32-C3-Home-Assistant-Neewer-RGB-1200)**
   — C++ / ESPHome config for the **RGB-1200** over an ESP32-C3 BLE bridge, exposed to HA (light
   MAC + WiFi credentials in YAML). Same author as the SNL660 config. MIT.
+- **[dsjodin/studio_lights](https://github.com/dsjodin/studio_lights)** — C++ (ESP32-C3). A web
+  portal that drives **Neewer 288ARC** lights (over a 2.4 GHz **A7105** SPI radio) and Weeylite
+  RB9 lights (BLE iBeacon) from one board and UI. Same author as `neewer_light_288ARC`.
 - **[dsjodin/neewer_light_288ARC](https://github.com/dsjodin/neewer_light_288ARC)** — C++
   (ESP32 / PlatformIO). Controls the **288ARC** studio light over an **A7105 2.4 GHz** module
   (not BLE — the 288ARC is a proprietary-RF fixture); ships its own
@@ -283,7 +288,7 @@ BLE, unless noted.
   2026-04-03. Uses name prefixes `("NEEWER", "NW-", "SL", "NWR")` and has an `--infinity` flag.
 
 No dedicated Art-Net-only, TouchOSC-layout, or QLC+ fixture project for Neewer was found (see
-[Leads to verify](#leads-to-verify)).
+[Gaps](#gaps)).
 
 ---
 
@@ -408,21 +413,13 @@ The "NeewerLite" family has a clear root and two lineages:
 
 ---
 
-## Leads to verify
+## Gaps
 
-Surfaced in search but not confirmed to the standard of the entries above, or borderline
-in scope:
+Searched for and not found — integrations that do not appear to exist yet:
 
-- **`homebridge-neewer-lights` on npm** — referenced as the BLE layer under
-  coachjamesgunaca/neewer-streamdeck; the GitHub repo is confirmed, but publication to the npm
-  registry was not verified (npmjs.com search returned HTTP 403).
-- **crates.io / npm publication** of the Rust and JS/TS projects above was not independently
-  confirmed; they appear to be source-only GitHub repos.
-- **dsjodin/neweer_studio, dsjodin/studio_lights** — recent 2026 activity, empty API
-  descriptions, not fetched.
-- **@4noxx** — a Python GL25B USB-HID implementation cited secondhand in
-  kgleeson/NeewerGL25BHASS's credits; the actual repo could not be located.
-- **QLC+, TouchOSC, and a native Bitfocus Companion module** — no Neewer-specific fixture
-  profile, `.tosc` layout, or `companion-module-neewer-*` was found; searches returned only
-  generic tooling. A native Companion module does not appear to exist yet (no open request
-  found in `bitfocus/companion-module-requests`).
+- **Bitfocus Companion** — no `companion-module-neewer-*` module, and no open request in
+  `bitfocus/companion-module-requests`.
+- **QLC+ / TouchOSC / Art-Net-only** — no Neewer QLC+ fixture profile, `.tosc` layout, or
+  dedicated Art-Net project; searches returned only generic tooling.
+- **@4noxx GL25B USB-HID** — cited secondhand in `kgleeson/NeewerGL25BHASS`'s credits, but the
+  repository could not be located.
