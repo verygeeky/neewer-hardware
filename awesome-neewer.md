@@ -302,12 +302,18 @@ plugins.
   1 star. *Protocol overlap: shares the exact `6940…` GATT triad with the tube lights,
   confirming the service is used across Neewer's whole BLE line, not just lighting; documents
   Manual/Live/Timelapse modes and a 5-second status/heartbeat packet.*
-- **[Tom Clement — reverse-engineering the Neewer keylight RF remote](https://www.hackster.io/news/tom-clement-reverse-engineers-neweer-s-wireless-light-controls-to-ease-rapid-setup-a9ff5c445ab8)**
-  (Hackster.io syndication). Reverse-engineers the **2.4 GHz RF remote** (not BLE): identifies
-  an STM8 MCU and an SI24R1 (nRF24L01 clone) radio, sniffs the STM8↔radio UART with a logic
-  analyzer, and reproduces commands from an Arduino Nano + NRF24L01. Contrast data point for a
-  different radio family. (Confirmed via the Hackster page; the primary blog is in
-  [Leads to verify](#leads-to-verify).)
+- **[Tom Clement — Reverse Engineering the Neewer 660 Keylight's Remote](https://web.archive.org/web/20241213122350/https://www.inthenameofscience.nl/reverse-engineering-neewer-660-keylight-remote-control/)**
+  (inthenameofscience.nl, via archive.org; also syndicated on
+  [Hackster.io](https://www.hackster.io/news/tom-clement-reverse-engineers-neweer-s-wireless-light-controls-to-ease-rapid-setup-a9ff5c445ab8)).
+  Reverse-engineers the **NL660-2.4 panel's 2.4 GHz RF remote (RT-100)**: identifies an
+  **STM8L152C6T6** MCU driving an **SI24R1** (nRF24L01 clone), and — the STM8 flash being
+  read-protected — sniffs the **STM8↔SI24R1 SPI bus** with a logic analyzer to recover both the
+  radio setup and the packet protocol. Radio: 2410 MHz (channel 10), GFSK 250 kb/s, 3-byte
+  address `0xD35C6E`, CRC16, 32-byte payload, no auto-ack. *Protocol overlap with the BLE line:
+  the 2.4 GHz payload is `77 <panel> 01 <cmd> <value> …` — a `0x77` preamble (vs the BLE `0x78`),
+  `0x82` brightness / `0x83` temperature commands (matching the BLE opcodes), and a panel-target
+  byte (0–10, or 88 for all). No security; commands are replayable.* Reproduced with an Arduino
+  Nano + NRF24L01. A third independent confirmation of the SI24R1 for the 2.4 GHz radio.
 
 ---
 
@@ -376,10 +382,6 @@ in scope:
   registry was not verified (npmjs.com search returned HTTP 403).
 - **crates.io / npm publication** of the Rust and JS/TS projects above was not independently
   confirmed; they appear to be source-only GitHub repos.
-- **inthenameofscience.nl — "Reverse Engineering Neewer 660 Keylight Remote Control"** —
-  <https://www.inthenameofscience.nl/reverse-engineering-neewer-660-keylight-remote-control/> —
-  the primary blog behind the Tom Clement / Hackster story; the domain returned DNS SERVFAIL
-  from this environment. Retry later or via archive.org.
 - **[MrCurlsTTV/hacs-neweer-gl1](https://github.com/MrCurlsTTV/hacs-neweer-gl1)** — listed
   above under HA; the WiFi GL1 protocol details were confirmed but its HACS-default-store
   status was not.
