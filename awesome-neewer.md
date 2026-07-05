@@ -54,9 +54,6 @@ community projects elsewhere in this list are the open alternatives.
 
 ### Python
 
-- **[dsjodin/neweer_studio](https://github.com/dsjodin/neweer_studio)** — Python. A BLE control
-  library and CLI for Neewer lights (targets TL21C, SL90, and other BLE fixtures), independent
-  of the official app.
 - **[matthobby/neewer-lib](https://github.com/matthobby/neewer-lib)** — Python (PyPI:
   [`neewerlite`](https://pypi.org/project/neewerlite/)). BLE control library that documents
   and implements two opcode families: the standard `0x78` "Studio" protocol and a separate
