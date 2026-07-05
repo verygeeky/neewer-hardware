@@ -40,11 +40,11 @@ community projects elsewhere in this list are the open alternatives.
   to the app's origin as a ring-light controller.
 - **NEEWER Control Center** — first-party device-management app for desktop.
   [Mac App Store](https://apps.apple.com/us/app/neewer-control-center/id1664344174?mt=12).
-- **NEEWER Live** — first-party app for the WiFi / streaming lights, and the basis for the
-  **Elgato Stream Deck** plugin. The **"NEEWER Live" Stream Deck plugin** (requires NEEWER
-  Control Center) controls Neewer streaming lights from a Stream Deck — the official
-  integration the community OBS/Stream Deck projects reimplement.
-  [Elgato Marketplace](https://marketplace.elgato.com/stream-deck/plugins).
+- **NEEWER Live** — first-party app for the WiFi / streaming lights.
+- **NEEWER Control** — the official closed-source **Elgato Stream Deck** plugin (v3.1.10) for
+  Neewer streaming lights, connecting through NEEWER Control Center; the integration the
+  community OBS / Stream Deck projects reimplement.
+  [Elgato Marketplace](https://marketplace.elgato.com/product/neewer-control-953dc64a-234b-49a4-9702-bdbdbadd7f49).
 - **NEEWER Live 2.4G** — first-party app paired with the 2.4 GHz USB dongle.
 - **NEEWER Home** — first-party home-lighting app for the `NH-*` line (Bluetooth / WiFi), which
   uses the distinct `0x7A` protocol noted above.
@@ -323,11 +323,6 @@ plugins.
   as a writeup of reverse-engineering the **2.4 GHz USB dongle** (VID `0x0581` / PID `0x011D`)
   by hooking `Send_RF_DATA` inside Neewer's `Set_Dongle_RF_API_x64.dll` with Frida. A third,
   distinct control path (USB HID, not BLE, not the RF remote).
-- **[Tida-Support/Neewer-DL200](https://github.com/Tida-Support/Neewer-DL200)** — JavaScript.
-  BLE protocol documentation for the Neewer **DL200 camera dolly** (not a light). GPL-3.0.
-  1 star. *Protocol overlap: shares the exact `6940…` GATT triad with the tube lights,
-  confirming the service is used across Neewer's whole BLE line, not just lighting; documents
-  Manual/Live/Timelapse modes and a 5-second status/heartbeat packet.*
 - **[Tom Clement — Reverse Engineering the Neewer 660 Keylight's Remote](https://web.archive.org/web/20241213122350/https://www.inthenameofscience.nl/reverse-engineering-neewer-660-keylight-remote-control/)**
   (inthenameofscience.nl, via archive.org; also syndicated on
   [Hackster.io](https://www.hackster.io/news/tom-clement-reverse-engineers-neweer-s-wireless-light-controls-to-ease-rapid-setup-a9ff5c445ab8)).
@@ -340,6 +335,21 @@ plugins.
   `0x82` brightness / `0x83` temperature commands (matching the BLE opcodes), and a panel-target
   byte (0–10, or 88 for all). No security; commands are replayable.* Reproduced with an Arduino
   Nano + NRF24L01. A third independent confirmation of the SI24R1 for the 2.4 GHz radio.
+
+---
+
+## Related hardware
+
+Neewer non-light devices that share the BLE ecosystem.
+
+- **Neewer DL200 camera dolly** — a motorised camera dolly (not a light) that speaks over the
+  **same `6940…` GATT service** as the tubes, confirming the service spans Neewer's whole BLE
+  line. Documented modes: Manual / Live / Timelapse, with a 5-second status/heartbeat packet.
+  - **[Tida-Support/Neewer-DL200](https://github.com/Tida-Support/Neewer-DL200)** — JavaScript.
+    BLE protocol documentation for the DL200. GPL-3.0. 1 star.
+  - **[Everlast Engineering — a web controller for the Neewer DL series](https://everlastengineering.com/neewer-dl200/)**
+    — a web-based Bluetooth controller for the DL-200 dolly with features beyond the official
+    app. Code at [github.com/everlastEngineering](https://github.com/everlastEngineering/).
 
 ---
 
@@ -416,9 +426,3 @@ in scope:
   profile, `.tosc` layout, or `companion-module-neewer-*` was found; searches returned only
   generic tooling. A native Companion module does not appear to exist yet (no open request
   found in `bitfocus/companion-module-requests`).
-- **NEEWER Control** (official Elgato Stream Deck plugin) —
-  <https://marketplace.elgato.com/product/neewer-control-953dc64a-234b-49a4-9702-bdbdbadd7f49>
-  — the first-party, closed-source Stream Deck plugin (v3.1.10, 2025-08-15). Not open source;
-  noted only so the list does not read as incomplete.
-- **Tida-Support/Neewer-DL200** is listed above (RE writeups) but targets a camera *dolly*,
-  not a light — included for the shared GATT service, not as a lighting controller.
