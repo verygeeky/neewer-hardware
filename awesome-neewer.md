@@ -7,6 +7,27 @@ RGB / CB / SL panels, COB heads).
 Activity figures (stars, last-commit dates), licenses, and model lists are stated only where
 visible on the project's page.
 
+## From this project
+
+The software written alongside this reference — built on, and feeding back into, the research
+documented here:
+
+- **[neewer-python](https://github.com/verygeeky/neewer-python)** — Python (PyPI:
+  [`neewer`](https://pypi.org/project/neewer/)). The control **library**: a typed `Fleet` BLE
+  client (persistent connections, auto-reconnect supervisor, groups/aliases/positions), the
+  verified frame layer (power / HSI / CCT / scenes / pixel / RGBCW / CIE-xy / gel, by-MAC and
+  by-channel forms), reply decoding, fixture identity from the advertised serial, per-model
+  capability gating, DMX personalities, and animation effects. The protocol core is pure
+  standard library — `bleak` enters only at the transport seam. MIT.
+- **[neewerd](https://github.com/verygeeky/neewerd)** — Python (PyPI:
+  [`neewerd`](https://pypi.org/project/neewerd/)). The control **daemon** over that library:
+  holds the BLE links and exposes the lights over socket / MQTT with Home Assistant discovery /
+  OSC / HTTP REST + web UI / Art-Net / sACN, plus a `neewerctl` CLI client and a stdio MCP
+  server (`neewer-mcp`). MIT.
+
+(The [verygeeky/NeewerLite-Python](#fork-lineage) fork under Fork lineage is from the same
+author — a GUI client re-aimed at the daemon.)
+
 ## A note on transports
 
 Neewer lights do not all speak one protocol. Four physically distinct control paths appear
@@ -182,7 +203,8 @@ community projects elsewhere in this list are the open alternatives.
 
 ## Home Assistant integrations
 
-BLE, unless noted.
+BLE, unless noted. [neewerd](#from-this-project) (above) reaches Home Assistant a different
+way: MQTT Discovery — `light` entities per tube/group appear automatically against a broker.
 
 - **[darinlarimore/neewer-ble-homeassistant](https://github.com/darinlarimore/neewer-ble-homeassistant)**
   — Python. Custom integration for BLE control (brightness, CCT, RGB, auto-discovery); tested
@@ -266,6 +288,9 @@ BLE, unless noted.
 
 ## DMX / Art-Net / sACN / OSC / MIDI bridges
 
+[neewerd](#from-this-project) (above) receives **Art-Net** and **sACN / E1.31** and drives the
+tubes over BLE with rate-limited writes; it also takes OSC.
+
 - **[amattas/neewer-sacn](https://github.com/amattas/neewer-sacn)** — Python. sACN / E1.31 →
   BLE bridge (a lighting console drives Neewer lights with no physical DMX adapter). Ships the
   three-variant protocol spec noted under [Protocol documentation](#protocol-documentation-elsewhere).
@@ -284,8 +309,8 @@ BLE, unless noted.
   (`bleak`) with HSI / CCT / scene / per-note mapping modes. Targets the **CB100C**. Last push
   2026-04-03. Uses name prefixes `("NEEWER", "NW-", "SL", "NWR")` and has an `--infinity` flag.
 
-No dedicated Art-Net-only, TouchOSC-layout, or QLC+ fixture project for Neewer was found (see
-[Gaps](#gaps)).
+No dedicated TouchOSC-layout or QLC+ fixture project for Neewer was found (see [Gaps](#gaps));
+for Art-Net the only receiver found is [neewerd](#from-this-project)'s module.
 
 ---
 
@@ -416,7 +441,7 @@ Searched for and not found — integrations that do not appear to exist yet:
 
 - **Bitfocus Companion** — no `companion-module-neewer-*` module, and no open request in
   `bitfocus/companion-module-requests`.
-- **QLC+ / TouchOSC / Art-Net-only** — no Neewer QLC+ fixture profile, `.tosc` layout, or
-  dedicated Art-Net project; searches returned only generic tooling.
+- **QLC+ / TouchOSC** — no Neewer QLC+ fixture profile or `.tosc` layout; searches returned
+  only generic tooling. (Art-Net itself is covered by [neewerd](#from-this-project).)
 - **@4noxx GL25B USB-HID** — cited secondhand in `kgleeson/NeewerGL25BHASS`'s credits, but the
   repository could not be located.
