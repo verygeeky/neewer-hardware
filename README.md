@@ -40,8 +40,10 @@ A physical switch on the fixture selects one control mode at a time:
 
 The Bluetooth LE interface is open and unauthenticated: a client connects, writes command
 frames, and the fixture responds. The frame format and the full command set are in
-[protocol.md](protocol.md). Community software that controls these lights is indexed in
-[awesome-neewer.md](awesome-neewer.md).
+[protocol.md](protocol.md). This reference is implemented by the
+[neewer](https://github.com/verygeeky/neewer-python) Python library and the
+[neewerd](https://github.com/verygeeky/neewerd) control daemon built on it; other community
+software that controls these lights is indexed in [awesome-neewer.md](awesome-neewer.md).
 
 ## What's in this reference
 
