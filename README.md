@@ -51,6 +51,7 @@ software that controls these lights is indexed in [awesome-neewer.md](awesome-ne
 |---|---|
 | [hardware.md](hardware.md) | The radios, power/adapters, the physical BLE / 2.4G / DMX mode switch, the 2.4 GHz channel sync, and operational behaviour. |
 | [protocol.md](protocol.md) | The Bluetooth wire protocol: GATT services, frame format, addressing modes, the full command-opcode reference, and reply decoding. |
+| [2.4g.md](2.4g.md) | The 2.4 GHz over-air control protocol: link parameters, frame format, channel-keyed addressing, and the command and effect opcodes. |
 | [provisioning.md](provisioning.md) | The `networkId` group id — enrolling a light into a group, using it as a stable per-unit id, and resetting it. |
 | [pixel-and-streamer.md](pixel-and-streamer.md) | The pixel-effect palette system and the TL60 "Streamer" / FX-Flow feature. |
 | [dmx.md](dmx.md) | The two independent DMX paths: wired DMX512 and 2.4 GHz "Wireless DMX". |
