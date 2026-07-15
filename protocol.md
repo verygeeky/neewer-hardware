@@ -221,7 +221,9 @@ a 2.4G group channel and are not self-applied by a BLE-connected fixture.
 
 ### Firmware / OTA
 
-See [firmware.md](firmware.md) for the full update flow.
+See [firmware.md](firmware.md) for the full update flow, including the fragment-spacing constraint
+(keep GATT fragments around 20 ms apart to avoid overrunning the two-chip UART) that a working OTA
+implementation depends on.
 
 | Opcode | Name | Payload |
 |---|---|---|
